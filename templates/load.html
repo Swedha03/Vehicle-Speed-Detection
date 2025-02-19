@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video</title>
+    <style>
+        /* Loading spinner styles */
+        #loading {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
+            text-align: center;
+            padding-top: 20%;
+        }
+
+        .spinner {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading" style="display: flex;">
+        <div class="spinner"></div>
+        <div>
+            <p style="color: black;">Processing your video, please wait...</p>
+        </div>
+    </div>
+
+    <h1>Upload Video</h1>
+    <form id="upload-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+    <script>
+        document.getElementById('upload-form').onsubmit = function () {
+            // Show loading spinner
+            document.getElementById('loading').style.display = 'block';
+        };
+    </script>
+</body>
+
+</html>
