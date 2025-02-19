@@ -51,7 +51,7 @@ pip install -r requirements.txt
 
 1️⃣ **Run the program**  
 ```bash
-python main.py --video path/to/video.mp4
+python manage.py --video path/to/video.mp4
 ```
 
 2️⃣ **Optional Parameters**  
